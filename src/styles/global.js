@@ -11,7 +11,7 @@ ${({ theme }) => css`
 
             .todoapp {
                 background: ${theme.colors.background};
-                color: ${theme.colors.text};
+                color: ${theme.colors.textColor};
                 margin: 2rem 0 4rem 0;
                 padding: 1rem;
                 position: relative;
@@ -20,8 +20,14 @@ ${({ theme }) => css`
             }
 
             .btn__primary {
-                color: #fff;
-                background-color: #000;
+                color: ${theme.colors.btnTextColor};
+                background-color: ${theme.colors.primary};
+            }
+
+            .btn__danger {
+                color: ${theme.colors.btnTextColor};
+                background-color: ${theme.colors.red2};
+                border-color: ${theme.colors.red1};
             }
         }
     }

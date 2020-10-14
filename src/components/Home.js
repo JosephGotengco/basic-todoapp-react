@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Form from "./Form";
 import FilterButton from "./FilterButton";
 import Todo from "./Todo";
+import ClearAllButton from "./ClearAllButton";
 import { nanoid } from "nanoid";
 
 const DATA = [
@@ -110,12 +111,7 @@ function Home(props) {
             </div>
             <div className="list-heading-container">
                 <h2 id="list-heading">{headingText}</h2>
-                <button
-                    className="btn btn__primary"
-                    data-testid="new-todo-button"
-                >
-                    <span onClick={clearAllTasks}>Clear All Tasks</span>
-                </button>
+                <ClearAllButton clearAllTasks={clearAllTasks} />
             </div>
             <ul
                 className="todo-list stack-large stack-exception"
