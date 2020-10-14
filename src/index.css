@@ -343,3 +343,13 @@ body {
 .c-cb>input[type="checkbox"]:checked+label::after {
   opacity: 1;
 }
+
+.list-heading-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#list-heading {
+  margin-block-start: 0px;
+}

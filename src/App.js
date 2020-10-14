@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "./components/Form";
 import FilterButton from "./components/FilterButton";
 import Todo from "./components/Todo";
 import { nanoid } from "nanoid";
+
+const DATA = [
+    { id: "todo-0", name: "Eat", completed: true },
+    { id: "todo-1", name: "Sleep", completed: false },
+    { id: "todo-2", name: "Repeat", completed: false },
+];
 
 const FILTER_MAP = {
     All: () => true,
@@ -12,8 +18,19 @@ const FILTER_MAP = {
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
 function App(props) {
-    const [tasks, setTasks] = useState(props.tasks);
+    const [tasks, setTasks] = useState(DATA);
     const [filter, setFilter] = useState("All");
+
+    useEffect(() => {
+        const data = localStorage.getItem("listOfTasks");
+        if (data) {
+            setTasks(JSON.parse(data));
+        }
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("listOfTasks", JSON.stringify(tasks));
+    }, [tasks]);
 
     const filterList = FILTER_NAMES.map((name) => (
         <FilterButton
@@ -44,10 +61,12 @@ function App(props) {
         });
         setTasks(updatedTasks);
     }
+
     function deleteTask(id) {
         const remainingTasks = tasks.filter((task) => id !== task.id);
         setTasks(remainingTasks);
     }
+
     function editTask(id, newName) {
         const editedTaskList = tasks.map((task) => {
             // if this task has the same ID as the edited task
@@ -59,6 +78,7 @@ function App(props) {
         });
         setTasks(editedTaskList);
     }
+
     const taskList = tasks
         .filter((task) => FILTER_MAP[filter](task))
         .map((task) => (
@@ -73,6 +93,11 @@ function App(props) {
             />
         ));
 
+    const clearAllTasks = () => {
+        localStorage.clear();
+        setTasks([]);
+    };
+
     const tasksNoun = taskList.length !== 1 ? "tasks" : "task";
     const headingText = `${taskList.length} ${tasksNoun} remaining`;
     return (
@@ -81,7 +106,15 @@ function App(props) {
             <div className="filters btn-group stack-exception">
                 {filterList}
             </div>
-            <h2 id="list-heading">{headingText}</h2>
+            <div className="list-heading-container">
+                <h2 id="list-heading">{headingText}</h2>
+                <button
+                    className="btn btn__primary"
+                    data-testid="new-todo-button"
+                >
+                    <span onClick={clearAllTasks}>Clear All Tasks</span>
+                </button>
+            </div>
             <ul
                 role="list"
                 className="todo-list stack-large stack-exception"
