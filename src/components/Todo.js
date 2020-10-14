@@ -13,18 +13,23 @@ export default function Todo(props) {
         setEditing(false);
     }
     const editingTemplate = (
-        <form className="stack-small" onSubmit={handleSubmit}>
+        <form
+            className="stack-small"
+            onSubmit={handleSubmit}
+            data-testid="todo-edit-view"
+        >
             <div className="form-group">
                 <label className="todo-label" htmlFor={props.id}>
                     New name for {props.name}
                 </label>
                 <input
                     id={props.id}
+                    data-testid={props.id}
                     className="todo-text"
                     type="text"
                     value={newName}
                     onChange={handleChange}
-                />{" "}
+                />
             </div>
             <div className="btn-group">
                 <button
@@ -47,7 +52,7 @@ export default function Todo(props) {
         </form>
     );
     const viewTemplate = (
-        <div className="stack-small">
+        <div className="stack-small" data-testid="todo-view">
             <div className="c-cb">
                 <input
                     id={props.id}
@@ -63,6 +68,7 @@ export default function Todo(props) {
                 <button
                     type="button"
                     className="btn"
+                    data-testid="todo-view-edit-btn"
                     onClick={() => setEditing(true)}
                 >
                     Edit <span className="visually-hidden">{props.name}</span>
