@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 import Error from "./components/Error";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 
-function App(props) {
+function App() {
     return (
         <div className="todoapp stack-large">
             <div className="nav-group">

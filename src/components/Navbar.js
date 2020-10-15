@@ -1,18 +1,36 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-function Navbar() {
+function Navbar(props) {
+    
+    const getTextDecoration = (linkPathname) => {
+        return props.location.pathname === linkPathname ? "underline" : "none";
+    }
+
     return (
         <nav>
-            <Link to="/" style={{ textDecoration: "underline", color: "inherit" }}>
+            <Link
+                to="/"
+                style={{
+                    textDecoration: getTextDecoration("/"),
+                    color: "inherit",
+                }}
+            >
                 Home
             </Link>
             {" | "}
-            <Link to="/about" style={{ textDecoration: "underline", color: "inherit" }}>
+            <Link
+                to="/about"
+                style={{
+                    textDecoration: getTextDecoration("/about"),
+                    color: "inherit",
+                }}
+            >
                 About
             </Link>
         </nav>
     );
 }
 
-export default Navbar;
+export default withRouter(Navbar);
+

@@ -19,7 +19,7 @@ const FILTER_MAP = {
 
 const FILTER_NAMES = Object.keys(FILTER_MAP);
 
-function Home(props) {
+function Home() {
     const [tasks, setTasks] = useState(DATA);
     const [filter, setFilter] = useState("All");
 
