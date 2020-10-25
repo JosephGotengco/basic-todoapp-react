@@ -28,6 +28,16 @@ function Navbar(props) {
             >
                 About
             </Link>
+            {" | "}
+            <Link
+                to="/api"
+                style={{
+                    textDecoration: getTextDecoration("/api"),
+                    color: "inherit",
+                }}
+            >
+                API
+            </Link>
         </nav>
     );
 }

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Form from "./Form";
-import FilterButton from "./FilterButton";
-import Todo from "./Todo";
-import ClearAllButton from "./ClearAllButton";
+import Form from "../Form";
+import FilterButton from "../FilterButton";
+import Todo from "../Todo";
+import Button from "../Button";
 import { nanoid } from "nanoid";
 
 
@@ -112,7 +112,7 @@ function Home() {
             </div>
             <div className="list-heading-container">
                 <h2 id="list-heading">{headingText}</h2>
-                <ClearAllButton clearAllTasks={clearAllTasks} />
+                <Button handleClick={clearAllTasks} title={"Clear All Tasks"} />
             </div>
             <ul
                 className="todo-list stack-large stack-exception"

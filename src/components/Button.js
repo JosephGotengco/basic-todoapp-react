@@ -1,15 +1,15 @@
 import React from "react";
 
-const ClearAllButton = props => {
+const Button = (props) => {
     return (
         <button
             className="btn btn__primary"
             data-testid="new-todo-button"
-            onClick={props.clearAllTasks}
+            onClick={props.handleClick}
         >
-            <span>Clear All Tasks</span>
+			<span>{props.title}</span>
         </button>
     );
 };
 
-export default ClearAllButton;
+export default Button;

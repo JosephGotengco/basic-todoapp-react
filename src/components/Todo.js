@@ -3,12 +3,11 @@ import React, { useState } from "react";
 export default function Todo(props) {
     const [isEditing, setEditing] = useState(false);
     const [newName, setNewName] = useState("");
-    
 
     function handleChange(e) {
         setNewName(e.target.value);
     }
-    
+
     function handleSubmit(e) {
         e.preventDefault();
         props.editTask(props.id, newName);
@@ -55,6 +54,7 @@ export default function Todo(props) {
             </div>
         </form>
     );
+    
     const viewTemplate = (
         <div className="stack-small" data-testid="todo-view">
             <div className="c-cb">
@@ -62,6 +62,7 @@ export default function Todo(props) {
                     id={props.id}
                     type="checkbox"
                     checked={props.completed}
+                    value={props.completed}
                     onChange={() => props.toggleTaskCompleted(props.id)}
                 />
                 <label className="todo-label" htmlFor={props.id}>

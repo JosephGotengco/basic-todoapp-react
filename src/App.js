@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import About from "./components/About";
-import Home from "./components/Home";
+import About from "./components/pages/About";
+import Home from "./components/pages/Home";
+import Api from "./components/pages/Api";
 import Navbar from "./components/Navbar";
 import Error from "./components/Error";
 import ThemeSwitcher from "./components/ThemeSwitcher";
@@ -17,6 +18,7 @@ function App() {
             <Switch>
                 <Route path="/" component={Home} exact />
                 <Route path="/about" component={About} />
+                <Route path="/api" component={Api} />
                 <Route component={Error} />
             </Switch>
         </div>
