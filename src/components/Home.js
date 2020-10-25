@@ -5,6 +5,7 @@ import Todo from "./Todo";
 import ClearAllButton from "./ClearAllButton";
 import { nanoid } from "nanoid";
 
+
 const DATA = [
     { id: "todo-0", name: "Eat", completed: true },
     { id: "todo-1", name: "Sleep", completed: false },

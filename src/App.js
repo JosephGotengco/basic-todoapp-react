@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 import Error from "./components/Error";
 import ThemeSwitcher from "./components/ThemeSwitcher";
 
+// Route component tells which component to display based on the path
 function App() {
     return (
         <div className="todoapp stack-large">

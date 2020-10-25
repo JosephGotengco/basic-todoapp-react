@@ -5,6 +5,7 @@ import "./index.css";
 import AppProvider from "./components/AppProvider";
 import App from "./App";
 
+// BrowserRouter stores all the route components
 ReactDOM.render(
     <React.StrictMode>
         <BrowserRouter>
